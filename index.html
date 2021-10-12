@@ -5,20 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting Data From from</title>
-    <styel>
+    <style>
         body{
             background-color: #1d2126;
             color:white;
         }
-    </styel>
+
+        .wrapper{
+            width:400px;
+            max-width:90%;
+            margin: 0 auto;
+        }
+
+        .wrapper label {
+            display:block;
+            margin:0.5em 0;
+        }
+
+        .wrapper label input{
+            font-size: 18px;
+            padding:0.5em;
+        }
+
+        .wrapper input[type="submit"]{
+            font-size:20px;
+            text-transform:uppercase;
+            color:red;
+            margin:0px auto;
+            border:none;
+            outline:none;
+            padding:5px 10px;
+
+        }
+
+
+    </style>
 </head>
 <body>
     <h1>Form Data</h1>
 
     <div class="wrapper">
         <form action="" class="form">
+            <label id="nameField">
+                <input type="text" name="nameField" placeholder="name" required/>
+            </label>
+
+            <label id="emailField">
+
+                <input type="email" name="emailField" placeholder="Email" required>
+            </label>
+
+            <label id="passwordField">
+                <input type="password" name="passwordField" placeholder="password" required/>
+            </label>
+
+
+            <input type="submit" name="submit" value="submit" required/>
 
         </form>
     </div>
+
+    <script>
+        const wrapper = document.querySelector('.wrapper'),
+            form = document.querySelectorAll('.form'),
+            submitInput = form[0].querySelector('input[type="submit"]');
+
+        function GetDataForm(e){
+
+            e.preventDefault();
+
+            var formData = new FormData(form[0]);
+
+            alert( formData.get('nameField') + ' - '+ formData.get['emailField']
+            + '-' + formData.get('passwordField') );
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+
+            submitInput.addEventListener('click', GetDataForm, false);
+
+        }, false);
+
+
+    </script>
 </body>
 </html>
